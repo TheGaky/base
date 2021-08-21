@@ -25,8 +25,7 @@ async def edit_msg(call, text, reply_markup):
 @dp.message_handler(Command("start"))
 async def show_items(message: Message):
     msg = await message.answer(
-        text="Доброго времени суток, юзеры.\nДанный бот призван облегчить ваш процесс работы с посольством Чешской Республики в Санкт-Петербурге \n"
-             "Для начала работы выберете топик снизу", reply_markup=start)
+        text="Самое время найти немного географических данных.\nВас интересуют данные о городе или стране? \n", reply_markup=start)
     global latest_msg
     latest_msg[message.from_user.id] = msg
     if insert_user(message.from_user.username, message.from_user.id):
@@ -36,7 +35,7 @@ async def show_items(message: Message):
 
 
 @dp.callback_query_handler(
-    text_contains="bruh")
+    text_contains="city")
 async def sub(call: CallbackQuery):
     await call.answer(cache_time=60)
     await edit_msg(call, "SHIT", start)
