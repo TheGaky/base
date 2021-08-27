@@ -5,7 +5,7 @@ from aiogram.dispatcher.filters import Command
 from aiogram.types import Message, CallbackQuery
 
 from keyboards.inline.buttons import start
-from loader import dp
+from loader import dp, bot
 
 dp.message_handler()
 
