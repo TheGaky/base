@@ -3,6 +3,7 @@ import logging
 from config import SQL_HOST, SQL_USER, SQL_PASSWORD, SQL_DATABASE
 
 
+
 def insert_user(uid, briefcase, u_number, hash_id, alarm_w, alarm_b):
     this_user_already_exists = False
     if not get_all_users() is None:
