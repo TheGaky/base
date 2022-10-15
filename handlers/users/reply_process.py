@@ -12,8 +12,6 @@ dp.message_handler()
 latest_msg = {}
 
 
-
-
 async def edit_msg(call, text, reply_markup):
     global latest_msg
     try:
