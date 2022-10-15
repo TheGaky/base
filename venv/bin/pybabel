@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/Users/thegaky/PycharmProjects/Basic Geography/venv/bin/python" "$0" "$@"
-' '''
+#!/Users/thegaky/PycharmProjects/dick228/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
