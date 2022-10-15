@@ -37,9 +37,9 @@ async def edit_msg(call, text, reply_markup):
 
 @dp.message_handler(Command("start"))
 async def show_items(message: Message):
+    await Form.A.set()
     msg = await message.answer(
         text="Самое время найти немного географических данных.\nВас интересуют данные о городе или стране? \n", reply_markup=start)
-    await Form.A.set()
     global latest_msg
     latest_msg[message.from_user.id] = msg
     await message.delete()
