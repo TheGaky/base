@@ -60,3 +60,10 @@ async def sub(call: CallbackQuery):
     await edit_msg(call, "…начинаю что-то делать, зная, что это все равно не будет работать, главное – делать хоть что-нибудь", decision)
     await Form.C.set()
 
+
+@dp.callback_query_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+    await Form.D.set()

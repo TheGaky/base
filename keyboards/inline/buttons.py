@@ -17,3 +17,8 @@ never = KeyboardButton(text="Никогда", callback_data=get_callback.new(ite
 seldom = KeyboardButton(text="Редко", callback_data=get_callback.new(item_name="seldom"))
 sometimes = KeyboardButton(text="Иногда", callback_data=get_callback.new(item_name="sometimes"))
 often = KeyboardButton(text="Часто", callback_data=get_callback.new(item_name="often"))
+
+decision.insert(never)
+decision.insert(seldom)
+decision.insert(sometimes)
+decision.insert(often)
