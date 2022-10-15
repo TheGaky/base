@@ -37,9 +37,9 @@ async def edit_msg(call, text, reply_markup):
 
 @dp.message_handler(Command("start"))
 async def show_items(message: Message):
-    await Form.A.set()
     msg = await message.answer(
-        text="Самое время найти немного географических данных.\nВас интересуют данные о городе или стране? \n", reply_markup=start)
+        text="Пора умирать\n", reply_markup=start)
+    await Form.A.set()
     global latest_msg
     latest_msg[message.from_user.id] = msg
     await message.delete()
@@ -47,23 +47,20 @@ async def show_items(message: Message):
 
 @dp.callback_query_handler(state=Form.A)
 async def sub(call: CallbackQuery):
-
-    await call.delete()
+    await Form.next()
     await edit_msg(call, "...сосредотачиваюсь на том, что мне нужно сделать дальше – на следующем шаге", decision)
-    await Form.B.set()
+    await call.delete()
 
 
 @dp.callback_query_handler(state=Form.B)
 async def sub(call: CallbackQuery):
-
+    await Form.next()
     await call.delete()
     await edit_msg(call, "…начинаю что-то делать, зная, что это все равно не будет работать, главное – делать хоть что-нибудь", decision)
-    await Form.C.set()
 
 
 @dp.callback_query_handler(state=Form.C)
 async def sub(call: CallbackQuery):
-
+    await Form.next()
     await call.delete()
     await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
-    await Form.D.set()
