@@ -4,12 +4,27 @@ from aiogram.dispatcher.filters import Command
 
 from aiogram.types import Message, CallbackQuery
 
-from keyboards.inline.buttons import start
+from keyboards.inline.buttons import start, decision
+
+from aiogram.dispatcher import FSMContext
+from aiogram.dispatcher.filters.state import State, StatesGroup
+
+
 from loader import dp, bot
 
 dp.message_handler()
 
 latest_msg = {}
+latest_user_msg = {}
+
+
+class Form(StatesGroup):
+    A = State()
+    B = State()
+    C = State()
+    D = State()
+    E = State()
+    F = State()
 
 
 async def edit_msg(call, text, reply_markup):
@@ -24,12 +39,24 @@ async def edit_msg(call, text, reply_markup):
 async def show_items(message: Message):
     msg = await message.answer(
         text="Самое время найти немного географических данных.\nВас интересуют данные о городе или стране? \n", reply_markup=start)
+    await Form.A.set()
     global latest_msg
     latest_msg[message.from_user.id] = msg
+    await message.delete()
 
 
-@dp.callback_query_handler(
-    text_contains="city")
+@dp.callback_query_handler(state=Form.A)
 async def sub(call: CallbackQuery):
-    await call.answer(cache_time=60)
-    await edit_msg(call, "SHIT", start)
+
+    await call.delete()
+    await edit_msg(call, "...сосредотачиваюсь на том, что мне нужно сделать дальше – на следующем шаге", decision)
+    await Form.B.set()
+
+
+@dp.callback_query_handler(state=Form.B)
+async def sub(call: CallbackQuery):
+
+    await call.delete()
+    await edit_msg(call, "…начинаю что-то делать, зная, что это все равно не будет работать, главное – делать хоть что-нибудь", decision)
+    await Form.C.set()
+

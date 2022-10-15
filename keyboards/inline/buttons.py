@@ -1,14 +1,19 @@
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 
 from aiogram.utils.callback_data import CallbackData
 
 get_callback = CallbackData("get", "item_name")
 
 
-start = ReplyKeyboardMarkup(row_width=2)
-country = KeyboardButton(text="Страна", callback_data=get_callback.new(item_name="country"))
+start = ReplyKeyboardMarkup()
+like_start = KeyboardButton(text="Начать", callback_data=get_callback.new(item_name="start"))
 
-start.insert(country)
+start.insert(like_start)
 
-city = KeyboardButton(text="Город", callback_data=get_callback.new(item_name="city"))
-start.insert(city)
+decision = ReplyKeyboardMarkup()
+
+
+never = KeyboardButton(text="Никогда", callback_data=get_callback.new(item_name="never"))
+seldom = KeyboardButton(text="Редко", callback_data=get_callback.new(item_name="seldom"))
+sometimes = KeyboardButton(text="Иногда", callback_data=get_callback.new(item_name="sometimes"))
+often = KeyboardButton(text="Часто", callback_data=get_callback.new(item_name="often"))
