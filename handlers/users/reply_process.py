@@ -47,21 +47,21 @@ async def show_items(message: Message, state: FSMContext):
     latest_msg[message.from_user.id] = msg
 
 
-@dp.callback_query_handler(state=Form.A)
+@dp.message_handler(state=Form.A)
 async def sub(call: CallbackQuery):
     await Form.next()
     await edit_msg(call, "...сосредотачиваюсь на том, что мне нужно сделать дальше – на следующем шаге", decision)
     await call.delete()
 
 
-@dp.callback_query_handler(state=Form.B)
+@dp.message_handler(state=Form.B)
 async def sub(call: CallbackQuery):
     await Form.next()
     await call.delete()
     await edit_msg(call, "…начинаю что-то делать, зная, что это все равно не будет работать, главное – делать хоть что-нибудь", decision)
 
 
-@dp.callback_query_handler(state=Form.C)
+@dp.message_handler(state=Form.C)
 async def sub(call: CallbackQuery):
     await Form.next()
     await call.delete()
