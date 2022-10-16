@@ -39,8 +39,9 @@ async def edit_msg(call, text, reply_markup):
 async def show_items(message: Message):
     msg = await message.reply(
         text="Пора умирать\n", reply_markup=start)
-    await message.delete()
     await Form.A.set()
+    await message.delete()
+
     global latest_msg
     latest_msg[message.from_user.id] = msg
 
