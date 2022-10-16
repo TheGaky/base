@@ -15,7 +15,6 @@ from loader import dp, bot
 dp.message_handler()
 
 latest_msg = {}
-latest_user_msg = {}
 
 
 class Form(StatesGroup):
@@ -52,7 +51,22 @@ class Form(StatesGroup):
     AF = State()
     AG = State()
     AH = State()
-
+    AI = State()
+    AJ = State()
+    AK = State()
+    AL = State()
+    AM = State()
+    AN = State()
+    AO = State()
+    AP = State()
+    AQ = State()
+    AR = State()
+    AS = State()
+    AT = State()
+    AU = State()
+    AV = State()
+    AW = State()
+    AX = State()
 
 
 async def edit_msg(call, text, reply_markup):
