@@ -36,15 +36,15 @@ async def edit_msg(call, text, reply_markup):
 
 
 @dp.message_handler(Command("start"))
-async def show_items(message: Message):
+async def show_items(message: Message, state: FSMContext):
+    await state.set_state(Form.A)
     msg = await message.reply(
         text="Пора умирать\n", reply_markup=start)
-    await Form.A.set()
+
     await message.delete()
 
     global latest_msg
     latest_msg[message.from_user.id] = msg
-
 
 
 @dp.callback_query_handler(state=Form.A)
