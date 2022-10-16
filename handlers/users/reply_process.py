@@ -95,7 +95,7 @@ async def show_items(message: Message, state: FSMContext):
     await message.delete()
 
     fuck_msg[message.from_user.id] = msg
-    latest_msg[message.from_user.id] = msg
+    latest_msg[message.from_user.id] = msg2
 
 
 @dp.message_handler(state=Form.A)
