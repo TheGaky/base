@@ -37,7 +37,7 @@ async def edit_msg(call, text, reply_markup):
 
 @dp.message_handler(Command("start"))
 async def show_items(message: Message, state: FSMContext):
-    await state.set_state(Form.A)
+    await Form.A.set()
     msg = await message.reply(
         text="Пора умирать\n", reply_markup=start)
 
