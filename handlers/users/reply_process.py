@@ -25,7 +25,7 @@ class Form(StatesGroup):
     D = State()
     E = State()
     F = State()
-    F = State()
+    G = State()
     F = State()
     F = State()
     F = State()
