@@ -89,16 +89,16 @@ async def show_items(message: Message, state: FSMContext):
 
 @dp.message_handler(state=Form.A)
 async def sub(call: CallbackQuery):
-    await Form.next()
     await edit_msg(call, "...сосредотачиваюсь на том, что мне нужно сделать дальше – на следующем шаге", decision)
+    await Form.next()
     await call.delete()
 
 
 @dp.message_handler(state=Form.B)
 async def sub(call: CallbackQuery):
+    await edit_msg(call, "…начинаю что-то делать, зная, что это все равно не будет работать, главное – делать хоть что-нибудь", decision)
     await Form.next()
     await call.delete()
-    await edit_msg(call, "…начинаю что-то делать, зная, что это все равно не будет работать, главное – делать хоть что-нибудь", decision)
 
 
 @dp.message_handler(state=Form.C)
@@ -136,6 +136,132 @@ async def sub(call: CallbackQuery):
     await call.delete()
     await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
 
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
 
 
 @dp.message_handler(state=Form.C)
