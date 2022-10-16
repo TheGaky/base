@@ -32,7 +32,7 @@ async def edit_msg(call, text, reply_markup):
     try:
         await latest_msg[call.from_user.id].edit_text(text, reply_markup=reply_markup)
     except Exception as e:
-        logging.error(f"During {call.data} there was exception {e}")
+        logging.error(f"During {call} there was exception {e}")
 
 
 @dp.message_handler(Command("start"))
@@ -59,6 +59,43 @@ async def sub(call: CallbackQuery):
     await Form.next()
     await call.delete()
     await edit_msg(call, "…начинаю что-то делать, зная, что это все равно не будет работать, главное – делать хоть что-нибудь", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
+
+
+@dp.message_handler(state=Form.C)
+async def sub(call: CallbackQuery):
+    await Form.next()
+    await call.delete()
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+
 
 
 @dp.message_handler(state=Form.C)
