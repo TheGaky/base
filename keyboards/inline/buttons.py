@@ -6,9 +6,11 @@ get_callback = CallbackData("get", "item_name")
 
 
 start = ReplyKeyboardMarkup()
-like_start = KeyboardButton(text="Начать", callback_data=get_callback.new(item_name="start"))
 
+
+like_start = KeyboardButton(text="Начать", callback_data=get_callback.new(item_name="start"))
 start.insert(like_start)
+
 
 decision = ReplyKeyboardMarkup()
 
