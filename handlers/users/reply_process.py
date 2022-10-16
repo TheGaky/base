@@ -79,10 +79,8 @@ async def edit_msg(call, text, reply_markup):
 
 @dp.message_handler(Command("start"))
 async def show_items(message: Message, state: FSMContext):
+    msg = await bot.send_message("Пора умирать\n", reply_markup=start)
     await Form.A.set()
-    msg = await bot.send_message(
-        text="Пора умирать\n", reply_markup=start)
-
     await message.delete()
 
     global latest_msg
@@ -92,7 +90,7 @@ async def show_items(message: Message, state: FSMContext):
 @dp.message_handler(state=Form.A)
 async def sub(call: CallbackQuery):
     await Form.next()
-    await edit_msg(call, "...сосредотачиваюсь на том, что мне нужно сделать дальше – на следующем шаге", start)
+    await edit_msg(call, "...сосредотачиваюсь на том, что мне нужно сделать дальше – на следующем шаге", decision)
     await call.delete()
 
 
