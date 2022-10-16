@@ -24,3 +24,9 @@ decision.insert(never)
 decision.insert(seldom)
 decision.insert(sometimes)
 decision.insert(often)
+
+
+dick = InlineKeyboardMarkup()
+
+sick = InlineKeyboardButton(text="Никогда", callback_data=get_callback.new(item_name="sick"))
+dick.insert(sick)

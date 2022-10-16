@@ -4,7 +4,7 @@ from aiogram.dispatcher.filters import Command
 
 from aiogram.types import Message, CallbackQuery
 
-from keyboards.inline.buttons import start, decision
+from keyboards.inline.buttons import start, decision, dick
 
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
@@ -79,7 +79,7 @@ async def edit_msg(call, text, reply_markup):
 
 @dp.message_handler(Command("start"))
 async def show_items(message: Message, state: FSMContext):
-    msg = await bot.send_message(message.from_user.id, text="Пора умирать\n", reply_markup=start)
+    msg = await bot.send_message(message.from_user.id, text="Пора умирать\n", reply_markup=dick)
     await Form.A.set()
     await message.delete()
 
@@ -89,14 +89,14 @@ async def show_items(message: Message, state: FSMContext):
 
 @dp.message_handler(state=Form.A)
 async def sub(call: CallbackQuery):
-    await edit_msg(call, "...сосредотачиваюсь на том, что мне нужно сделать дальше – на следующем шаге", decision)
+    await edit_msg(call, "...сосредотачиваюсь на том, что мне нужно сделать дальше – на следующем шаге", dick)
     await Form.next()
     await call.delete()
 
 
 @dp.message_handler(state=Form.B)
 async def sub(call: CallbackQuery):
-    await edit_msg(call, "…начинаю что-то делать, зная, что это все равно не будет работать, главное – делать хоть что-нибудь", decision)
+    await edit_msg(call, "…начинаю что-то делать, зная, что это все равно не будет работать, главное – делать хоть что-нибудь", dick)
     await Form.next()
     await call.delete()
 
