@@ -80,7 +80,7 @@ async def edit_msg(call, text, reply_markup):
 @dp.message_handler(Command("start"))
 async def show_items(message: Message, state: FSMContext):
     await Form.A.set()
-    msg = await message.reply(
+    msg = await bot.send_message(
         text="Пора умирать\n", reply_markup=start)
 
     await message.delete()
