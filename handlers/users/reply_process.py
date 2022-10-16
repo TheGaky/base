@@ -1,4 +1,5 @@
 import logging
+import time
 
 from aiogram.dispatcher.filters import Command
 
@@ -88,24 +89,25 @@ async def edit_msg(call, text):
 
 @dp.message_handler(Command("start"))
 async def show_items(message: Message, state: FSMContext):
-    msg = await bot.send_message(message.from_user.id, text="Пора умирать\n", reply_markup=decision)
+    msg = await bot.send_message(message.from_user.id, text="Оказавшись в трудной ситуации, я...\n", reply_markup=decision)
+    msg2 = await bot.send_message(message.from_user.id, text="...сосредотачиваюсь на том, что мне нужно сделать дальше – на следующем шаге")
     await Form.A.set()
     await message.delete()
 
     fuck_msg[message.from_user.id] = msg
+    latest_msg[message.from_user.id] = msg
 
 
 @dp.message_handler(state=Form.A)
 async def sub(call: CallbackQuery):
-    msg = await bot.send_message(call.from_user.id, text="...сосредотачиваюсь на том, что мне нужно сделать дальше – на следующем шаге")
-    latest_msg[call.from_user.id] = msg
+    await edit_msg(call, "…начинаю что-то делать, зная, что это все равно не будет работать, главное – делать хоть что-нибудь")
     await Form.next()
     await call.delete()
 
 
 @dp.message_handler(state=Form.B)
 async def sub(call: CallbackQuery):
-    await edit_msg(call, "…начинаю что-то делать, зная, что это все равно не будет работать, главное – делать хоть что-нибудь")
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение")
     await Form.next()
     await call.delete()
 
@@ -114,7 +116,6 @@ async def sub(call: CallbackQuery):
 async def sub(call: CallbackQuery):
     await Form.next()
     await call.delete()
-    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение")
 
 
 @dp.message_handler(state=Form.D)
