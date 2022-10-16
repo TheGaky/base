@@ -15,6 +15,7 @@ from loader import dp, bot
 dp.message_handler()
 
 latest_msg = {}
+fuck_msg = {}
 
 
 class Form(StatesGroup):
@@ -69,34 +70,42 @@ class Form(StatesGroup):
     AX = State()
 
 
-async def edit_msg(call, text, reply_markup):
+"""async def edit_msg(call, text, reply_markup):
     global latest_msg
     try:
         await latest_msg[call.from_user.id].edit_text(text, reply_markup=reply_markup)
+    except Exception as e:
+        logging.error(f"During {call.data} there was exception {e}")
+"""
+
+async def edit_msg(call, text):
+    global latest_msg
+    try:
+        await latest_msg[call.from_user.id].edit_text(text)
     except Exception as e:
         logging.error(f"During {call.data} there was exception {e}")
 
 
 @dp.message_handler(Command("start"))
 async def show_items(message: Message, state: FSMContext):
-    msg = await bot.send_message(message.from_user.id, text="Пора умирать\n", reply_markup=dick)
+    msg = await bot.send_message(message.from_user.id, text="Пора умирать\n", reply_markup=decision)
     await Form.A.set()
     await message.delete()
 
-    global latest_msg
-    latest_msg[message.from_user.id] = msg
+    fuck_msg[message.from_user.id] = msg
 
 
 @dp.message_handler(state=Form.A)
 async def sub(call: CallbackQuery):
-    await edit_msg(call, "...сосредотачиваюсь на том, что мне нужно сделать дальше – на следующем шаге", dick)
+    msg = await bot.send_message(call.from_user.id, text="...сосредотачиваюсь на том, что мне нужно сделать дальше – на следующем шаге")
+    latest_msg[call.from_user.id] = msg
     await Form.next()
     await call.delete()
 
 
 @dp.message_handler(state=Form.B)
 async def sub(call: CallbackQuery):
-    await edit_msg(call, "…начинаю что-то делать, зная, что это все равно не будет работать, главное – делать хоть что-нибудь", dick)
+    await edit_msg(call, "…начинаю что-то делать, зная, что это все равно не будет работать, главное – делать хоть что-нибудь")
     await Form.next()
     await call.delete()
 
@@ -105,14 +114,14 @@ async def sub(call: CallbackQuery):
 async def sub(call: CallbackQuery):
     await Form.next()
     await call.delete()
-    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение")
 
 
 @dp.message_handler(state=Form.D)
 async def sub(call: CallbackQuery):
     await Form.next()
     await call.delete()
-    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение", decision)
+    await edit_msg(call, "…пытаюсь склонить вышестоящих к тому, чтобы они изменили свое мнение")
 
 
 @dp.message_handler(state=Form.F)
