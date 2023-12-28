@@ -36,7 +36,7 @@ counter = 2
 @dp.message_handler(Command("start"))
 async def show_items(message: Message, state: FSMContext):
     await message.delete()
-    table_path = "/Users/gaky/Downloads/оПРОСНИК В экселе для ГАКИ.xlsx"
+    table_path = "/Users/gaky/PycharmProjects/Anonymous Poll/base/Опросник для Гаки 3.xlsx"
     exel_data = pd.read_excel(table_path)
     columns = exel_data.columns.tolist()
     question = columns[0][2]
@@ -71,7 +71,7 @@ async def handle_user_action(message: types.Message, state: FSMContext):
 
         global counter
         counter += 1
-        table_path = "/Users/gaky/Downloads/оПРОСНИК В экселе для ГАКИ.xlsx"
+        table_path = "/Users/gaky/PycharmProjects/Anonymous Poll/base/Опросник для Гаки 3.xlsx"
         exel_data = pd.read_excel(table_path)
         columns = exel_data.columns.tolist()
         question = columns[0][counter]
