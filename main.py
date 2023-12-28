@@ -65,7 +65,7 @@ async def on_startup(dp):
 async def on_shutdown(dp):
     logging.warning('Bye! Shutting down webhook connection')
 
-"""def shit():
+def shit():
     logging.basicConfig(level=logging.INFO)
     start_webhook(
         dispatcher=dp,
@@ -76,8 +76,4 @@ async def on_shutdown(dp):
         port=WEBAPP_PORT,
     )
 
-shit()"""
-
-if __name__ == '__main__':
-    from aiogram import executor
-    executor.start_polling(dp, skip_updates=True)
+shit()
